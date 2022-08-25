@@ -408,4 +408,34 @@ document.write(
     "FirstName - " + obj.employees[1].firstName + "<br>" +
     "LastName - " + obj.employees[1].lastName
 )
+---------------------------JS DEBUGGER---------------------
+//It will pause the browser
+console.log("Hello");
+let x = 15 * 5;
+debugger;
+document.write(x);
+
+Don't Use new Object()
+---------------------------------
+Use ""   -->instead of new String()
+Use 0    -->instead of new Number()
+Use false--> instead of new Boolean()
+Use {}   --> instead of new Object()
+Use []   -->instead of new Array()
+Use /()/ -->instead of new RegExp()
+Use function (){} -->instead of new Function()
+
+let x1 = "";             // new primitive string
+let x2 = 0;              // new primitive number
+let x3 = false;          // new primitive boolean
+const x4 = {};           // new object
+const x5 = [];           // new array object
+const x6 = /()/;         // new regexp object
+const x7 = function(){}; // new function object
+
+// default JavaScript behavior to close a statement
+// automatically at the end of a line
+//No error
+let power = 10
+
 */
