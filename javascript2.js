@@ -159,4 +159,253 @@ const pattern = /a/;
 document.write(pattern.test("Rathish Kumar"));
 document.write(/t/.test("Rathish Kumar"));
 
+-----------------------JS ERRORS-----------------------
+Syntax :
+try{
+    Block of code to try
+}
+catch(err){
+    Block of code to handle errors
+}
+
+try {
+    addert("Welcome");
+}
+catch (err) {
+    document.write(err.message);
+}
+
+let x = 11;
+try {
+    if (x == "") throw "Empty";
+    if (isNaN(x)) throw "Not a Number";
+    x = Number(x);
+    if (x < 5) throw "Too low";
+    if (x > 10) throw "Too high";
+}
+catch (err) {
+    document.write("Input is " + err);
+}
+finally {
+    document.write("<br>Thank you!");
+}
+
+//Error Objects
+Property  |	Description
+----------|----------------
+name	  | Sets or returns an error name
+message	  | Sets or returns an error message (a string)
+
+	    
+Error Name     |Description
+---------------|----------------
+EvalError	   | An error has occurred in the eval() function
+RangeError	   | A number "out of range" has occurred
+ReferenceError | An illegal reference has occurred
+SyntaxError	   | A syntax error has occurred
+TypeError	   | A type error has occurred
+URIError	   | An error in encodeURI() has occurred            |
+ 
+ ------------------------STRICT MODE--------------------------
+
+"use strict";
+x = 3.14;
+//Error shows(x is not defined);
+
+"use strict";
+my();
+function my() {
+    y = 3.14;
+}
+
+
+//Declared inside function so it will not cause error outside
+x = 3.14;
+myfunc();
+function myfunc() {
+    "use strict";
+     y = 3.14;
+}
+
+//Objects
+"use strict";
+x = { p1: 1, p2: 2 };
+
+"use strict";
+let y = 3.14;
+delete y;
+//SyntaxError: 
+Delete of an unqualified identifier in strict mode
+
+"use strict";
+function x(p1, p2) { };
+delete x;
+Delete of an unqualified identifier in strict mode
+
+"use strict";
+function x(p1, p1) { };
+//SyntaxError:
+Duplicate parameter name not allowed
+
+"use strict";
+//Octal literals are not allowed in strict mode.
+let x = 010; 
+//Octal escape sequences are not allowed in strict mode.
+let y = "\010";
+---------------------------THIS KEYWORD-----------------
+
+
+const person = {
+    name: "rathish",
+    age: 21,
+    id: 136,
+    details: function () {
+        return this.name + " " + this.age;
+    }
+};
+
+document.write(person.details());
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+
+
+//this alone
+let x = this;
+document.write(x);//Output : [object Window]
+
+//this alone strict mode
+"use strict";
+let y = this;
+document.write(y);//Output : [object Window]
+
+function my() {
+    return this;
+}
+document.write(my());//Output : [object Window]
+
+
+"use strict";
+function my() {
+    return this;
+}
+document.write(my());//Output : undefined
+
+
+//Function call()
+const per = {
+    fullName: function () {
+        return this.firstName + " " + this.lastName;
+    }
+}
+const person = {
+    firstName: "Rathish",
+    lastName: "M",
+}
+document.write(per.fullName.call(person));
+
+//Function bind()
+const person = {
+    firstName: "john",
+    lastName: "doe",
+    fullName: function () {
+        return this.firstName + " " + this.lastName;
+    }
+}
+const member = {
+    firstName: "Rathish",
+    lastName: "M",
+}
+let fullName = person.fullName.bind(member);
+document.write(fullName());
+
+-------------------------ARROW FUNCTION-------------------
+
+//Before
+hello = function () {
+    return "Hello";
+}
+document.write(hello());
+
+//After Arrow
+he = () => {
+    return "hello";
+}
+document.write(he());
+
+hlo = () => "hello1";
+document.write(hlo());
+
+hello = (val) => "Hello " + val;
+document.write(hello("Guys"));
+
+hello = val => "Hello " + val;
+document.write(hello("Guys"));
+
+------------------------JS CLASSES--------------------------
+Syntax
+class ClassName {
+  constructor() { ... }
+}
+Always add a method named constructor():
+
+class Car{
+    constructor(name, year) {
+        this.name = name;
+        this.year = year;
+    }
+}
+let myCar = new Car("Ford", 2014);
+let myCar1 = new Car("Audi", 2019);
+document.write(myCar.name + " " + myCar1.year);
+
+class Car {
+    constructor(name, year) {
+      this.name = name;
+      this.year = year;
+    }
+    age() {
+      let date = new Date();
+      return date.getFullYear() - this.year;
+    }
+  }
+  
+let myCar = new Car("Ford", 2014);
+document.write("My car is " + myCar.age() + " years old.<br>");
+
+---------------------------JS JSON------------------------
+JSON stands for JavaScript Object Notation
+JSON is often used when data is sent from a server to a web page.
+
+JSON Syntax Rules
+--Data is in name/value pairs
+--Data is separated by commas
+--Curly braces hold objects
+--Square brackets hold arrays
+
+//JSON ARRAY
+{
+    "employees": [
+    { "firstName": "Rathish", "lastName": "M" },
+    { "firstName": "Naveen", "lastName": "M" },
+    { "firstName": "Vignesh", "lastName": "M" }
+]
+}
+
+//JSON text to a Javascript object
+
+let text = '{ "employees" :[' +
+    '{ "firstName": "Rathish", "lastName": "M" },' +
+    '{ "firstName": "Rathish", "lastName": "M" },' +
+    '{ "firstName": "Rathish", "lastName": "M" }]}';
+const obj = JSON.parse(text);
+
+document.write(
+    "FirstName - " + obj.employees[1].firstName + "<br>" +
+    "LastName - " + obj.employees[1].lastName
+)
 */
