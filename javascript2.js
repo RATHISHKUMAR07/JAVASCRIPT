@@ -438,4 +438,180 @@ const x7 = function(){}; // new function object
 //No error
 let power = 10
 
+-------------------------JS OBJECTS-------------------------
+JavaScript defines 7 types of primitive data types:
+
+string
+number
+boolean
+null
+undefined
+symbol
+bigint
+
+const person = { age: 20, year: 2012 };
+const x = person;
+x.age = 10;
+document.write("the age is " + person.age);
+document.write("the age is " + person['age']);
+//Adding properties
+person.firstName = "Rathish";
+person.lastName = "M";
+document.write(person.firstName + " " + person.lastName);
+//Deleting properties
+delete person.year;
+delete person["year"];
+document.write(person.year);//Undefined
+//Nested objects
+const obj = {
+    name: "Rathish",
+    age: 21,
+    cars: {
+        car1: "BMW",
+        car2: "Audi"
+    }
+}
+document.write(" " + obj.cars.car1 + " " + obj.cars.car2);
+document.write(" " + obj.cars["car1"] + " " + obj["cars"]["car2"]);
+
+let p1 = "cars";
+let p2 = "car1";
+document.write(" " + obj[p1][p2]);
+
+//Values in obj can be arrays and Values in arrays can be obj
+const obj = {
+    name: "Rathish ",
+    age: 21,
+    cars: [
+        { name: "BMW", models: ["320", "X3", "X5"] },
+        { name: "Ford", models: ["Fiesta", "Focus", "Mustang"] },
+        { name: "Fiat", models: ["500", "Panda"] }
+    ]
+}
+let x = "";
+for (let i in obj.cars) {
+    x += "<h2>" + obj.cars[i].name + "</h2>";
+    for (let j in obj.cars[i].models) {
+        x += "<br>" + obj.cars[i].models[j];
+    }
+}
+document.write(x);
+
+---------------------------JS OBJECT METHODS-----------------------
+const person = {
+    firstName: "Rathish",
+    lastName: "M",
+    age: 21,
+    id: 136,
+    fullName: function () {
+        return this.firstName + " " + this.lastName;
+    }
+}
+document.write(person.fullName());
+
+const person = {
+    firstName: "Rathish",
+    lastName: "M",
+    id: 5566,
+  };
+  person.name = function() {
+    return this.firstName + " " + this.lastName;
+};
+document.write(person.name());
+//Display objects
+const arr = Object.values(person);
+let str = JSON.stringify(person);
+document.write(arr + "<br>" + str);
+
+//JS Getter
+const person1 = {
+    firstName: "Rathish",
+    lastName: "M",
+    language: "en",
+    get lang() {
+        return this.language;
+    }
+}
+document.write(person1.lang);
+//JS Setter
+const person2 = {
+    firstName: "Rathish",
+    lastName: "M",
+    language: "",
+    set lang(lang) {
+        this.language = lang.toUpperCase();
+    }
+}
+person2.lang = "en";
+document.write(person2.language);
+
+const person3 = {
+    firstName: "rathish",
+    lastName: "M",
+    get fullName() {
+        return this.firstName + " " + this.lastName;
+    }
+}
+document.write(person3.fullName);
+
+const obj = {counter : 0};
+
+// Define Setters and Getters
+Object.defineProperty(obj, "reset", {
+  get : function () {this.counter = 0;}
+});
+Object.defineProperty(obj, "increment", {
+  get : function () {this.counter++;}
+});
+Object.defineProperty(obj, "decrement", {
+  get : function () {this.counter--;}
+});
+Object.defineProperty(obj, "add", {
+  set : function (value) {this.counter += value;}
+});
+Object.defineProperty(obj, "subtract", {
+  set : function (value) {this.counter -= value;}
+});
+//It will go through the all function
+obj.reset;
+obj.add = 5;
+obj.subtract = 1;
+obj.increment;
+obj.decrement;
+document.write(obj.counter);
+
+-----------------------JS OBJECT CONSTRUCTORS-------------------
+
+//Good practice to name constructor with an upper-case first letter.
+function Person(first, last, age, eye) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = eye;
+    this.name = function() {
+        return this.firstName + " " + this.lastName;
+    };
+    this.changeName = function (name) {
+        this.lastName = name;
+    }
+}
+const me = new Person("Rathish", "M", 21, "Blue");
+Person.nationality = "English";//Error can't add a new property
+//To add a new property to a constructor, you must add it to the constructor function:
+document.write(me.nationality);//Error : undefined
+
+document.write(me.eyeColor + " " + me.name());
+
+me.changeName("m");
+document.write(me.lastName);
+
+//Using prototype property allows to add new property outside
+Person.prototype.nationality = "Tamil";
+document.write(me.nationality);
+
+Person.prototype.nameAge = function() {
+    return this.firstName + " " + this.age;
+};
+document.write(me.nameAge());
+//Set don't allow duplicates
 */
