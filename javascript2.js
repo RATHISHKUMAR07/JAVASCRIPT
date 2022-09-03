@@ -817,4 +817,61 @@ let myCar = new Car("Ford");
 //We are using below line to change brand usings setter
 myCar.carname = "Volvo";
 document.write(myCar.carname);
+-----------------------JS ASYNC-------------------------
+//JS Callback
+A callback is a function passed as an argument to another function
+This technique allows a function to call another function
+A callback function can run after another function has finished
+
+//Callback
+function myDisplay(something) {
+    document.writeln(something);
+}
+function myCalculator(num1, num2, myCallback) {
+    let sum = num1 + num2;
+    myCallback(sum);
+}
+myCalculator(5, 5, myDisplay);
+
+function my() {
+    document.write("Hello!");
+}
+//'my' is used as a callback
+setTimeout(my, 2000);
+//When you pass a function as an argument,not to use parenthesis.
+setTimeout(function () {
+    my1("Hello@");
+}, 3000);
+
+function my1(value) {
+    document.write(value);
+}
+
+//In below code we setInterval to call every 1 second
+setInterval(time, 1000);
+function time() {
+    let d = new Date();
+    document.getElementById('demo').innerHTML =
+        d.getHours() + ":" +
+        d.getMinutes() + ":" +
+        d.getSeconds();
+}//It will change the time every sec eg:15:20:47
+
+function myDisplay(some) {
+    document.getElementById('demo1').innerHTML = some;
+}
+function getFile(myCallback){
+    let req = new XMLHttpRequest();
+    req.open('GET', "mycar.html");
+    req.onload = function () {
+        if (req.status == 200) {
+            myCallback(this.responseText);
+        }
+        else {
+            myCallback("Error: " + req.status);
+        }
+    }
+    req.send();
+}
+getFile(myDisplay);
 */
