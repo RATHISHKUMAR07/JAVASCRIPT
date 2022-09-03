@@ -614,4 +614,207 @@ Person.prototype.nameAge = function() {
 };
 document.write(me.nameAge());
 //Set don't allow duplicates
+
+// Change a property
+const person = {
+    firstName: "John",
+    lastName: "Doe",
+    language: "EN" 
+};
+Object.defineProperty(person, "language", { value: "NO" })
+document.write(person.language);
+
+----------------------JS FUNCTIONS-----------------------
+
+function my(a, b) {
+    return a * b;
+}
+document.write(my(2, 2));
+
+const my1 = function (a, b) { return a * b };
+document.write(my1(2, 2));
+
+//Function is invoked itself without bing called
+(function () {
+    document.write( "Hello! I called myself");
+})();
+
+function my2(a, b) {
+    return a + b;
+}
+let x = my2(2, 2) * 2;
+document.write(x);
+
+//ES5
+var y = function (x, y) {
+    return x * y;
+}
+
+//ES6 - Arrow Function
+const z = (x, y) => x * y;
+const z1 = (x, y) => { return x * y };
+
+document.write(" " + y(2, 2) + " " + z(2, 2));
+
+//Passing less parameter it will take as a Undefined
+function my(x, y) {
+    if (y === undefined) {
+        y = 2;
+    }
+    return x * y;
+}
+document.write(my(2));
+
+function my1(x, y = 2) {
+    return x * y;
+}
+document.write(my1(2));
+
+//Find Man Number using Arguments object  contains an array of the arguments
+function findMax() {
+    let max = -Infinity;
+    //arguments.length property returns the number of arguments received
+    for (let i = 0; i < arguments.length; i++){
+        if (arguments[i] > max) {
+            max = arguments[i];
+        }
+    }
+    return max;
+}
+//When using too many arguments we can use the arguments object
+document.write(findMax(8, 5, 7, 1, 2, 9, 44, 12, 77, 3));
+
+//Javascript call()
+const person = {
+    fullName : function () {
+        return this.firstName + " " + this.lastName;
+    }
+}
+const person1 = {
+    firstName : "Rathish",
+    lastName : "M"
+}
+const person2 = {
+    firstName : "Naveen",
+    lastName : "M"
+}
+
+document.write(person.fullName.call(person1) + " " +
+    person.fullName.call(person2));
+
+//Call method with arguments
+const person = {
+    fullName: function (rollNo,city) {
+        return this.firstName + " " + this.lastName + "," +
+            rollNo + "," + city;
+    } 
+}
+const person1 = {
+    firstName: "Rathish",
+    lastName: "M"
+}
+
+document.write(person.fullName.call(person1, 136, "New york"));
+
+//The call() method takes arguments separately.
+//The apply() method takes arguments as an array.
+const person = {
+    fullName: function (rollNo,city) {
+        return this.firstName + " " + this.lastName + "," +
+            rollNo + "," + city;
+    } 
+}
+const person1 = {
+    firstName: "Rathish",
+    lastName: "M"
+}
+document.write(person.fullName.apply(person1, [136, "New york"]));
+
+document.write(Math.max.apply(Math, [1, 2, 3, 4, 5]));
+document.write(Math.max.apply(null, [1, 2, 3, 4, 5]));
+document.write(Math.max.apply(" ", [1, 2, 3, 4, 5]));
+document.write(Math.max.apply(0, [1, 2, 3, 4, 5]));
+
+//Nested Function
+
+function add() {
+    let count = 0;
+    function increment() {
+        count += 1;
+    }
+    increment();
+    return count;
+}
+document.write(add());
+------------------------JS CLASSES-------------------------
+
+//Syntax
+class ClassName{
+    constructor() { }
+    //We have to add constructor always to the class
+}
+
+class Car {
+    constructor(name, year) {
+        this.name = name;
+        this.year = year;
+    }
+}
+//Using class we can create more objects
+const car1 = new Car("Ford", 2022);
+let car2 = new Car("Audi", 2021);
+document.write(car1.name + " " + car1.year);
+
+//We can create has many as methods in class
+class Car{
+    constructor(name, year) {
+        this.name = name;
+        this.year = year;
+    }
+    age() {
+        let date = new Date();
+        return date.getFullYear() - this.year;
+    }
+}
+let myCar = new Car("Ford", 2000);
+document.write("My car is " + myCar.age() + " years old.");
+--------------------CLASS INHERITANCE---------------------
+
+class Car {
+    constructor(brand) {
+        this.carname = brand;
+    }
+    present() {
+        return 'I have a ' + this.carname;
+    }
+}
+//Inherits
+class Model extends Car {
+    constructor(brand, mod) {
+        super(brand);//Super method refers to parent class 'Car'
+        this.model = mod;
+    }
+    show() {
+        return this.present() + ', it is a ' + this.model;
+    }
+}
+let myCar = new Model("Ford", "Mustang");
+document.write(myCar.show());
+
+class Car {
+    constructor(brand) {
+      this._carname = brand;
+    }
+    get carname() {
+      return this._carname;
+    }
+    set carname(x) {
+      this._carname = x;
+    }
+}
+//We are using underscore to separate the getter/setter from actual property
+let myCar = new Car("Ford");
+//We are using below line to change brand usings setter
+myCar.carname = "Volvo";
+document.write(myCar.carname);
 */
