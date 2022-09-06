@@ -857,6 +857,7 @@ function time() {
         d.getSeconds();
 }//It will change the time every sec eg:15:20:47
 
+//Waiting for a file to load fully then it will open mycar file
 function myDisplay(some) {
     document.getElementById('demo1').innerHTML = some;
 }
@@ -874,4 +875,108 @@ function getFile(myCallback){
     req.send();
 }
 getFile(myDisplay);
+
+//Promise Syntax
+let myPromise = new Promise(function (myResolve, myReject) {
+    //producing code
+});
+//Consuming code must wait  for a fulfilled promise
+myPromise.then(
+    function (value) { Code if successful},
+    function (error) { code if some error }
+);
+
+function myDisplayer(some) {
+    document.writeln(some);
+}
+let myPromise = new Promise(function (myResolve, myReject) {
+    let x = 1;
+    //The producing code
+    if (x == 0) {
+        myResolve("OK");
+    }
+    else {
+        myReject("Error");
+    }
+});
+
+myPromise.then(
+    function (value) { myDisplayer(value); },
+    function (error) { myDisplayer(error); }
+)
+
+let myPromise = new Promise(function (myResolve, myReject) {
+    setTimeout(function () { myResolve("Hello"); }, 3000);
+});
+
+myPromise.then(function (value) {
+    document.writeln(value);
+});
+
+//Waiting for a file to load fully then it will open mycar file
+//Using promise
+
+function myDisplayer(some) {
+    document.getElementById('demo').innerHTML = some;
+}
+
+let myPromise = new Promise(function (myResolve, myReject) {
+    let req = new XMLHttpRequest();
+    req.open('GET', "mycar.html");
+    req.onload = function () {
+        if (req.status == 200) {
+            myResolve(req.response)
+        }
+        else {
+            myReject("File no found");
+        }
+    };
+    req.send();
+});
+
+myPromise.then(
+    function (value) { myDisplayer(value); },
+    function (error) { myDisplayer(error); }
+);
+
+//Async Function
+function myDisplay(some) {
+    document.writeln(some);
+}
+async function myfunc() {
+    return 'Hello';
+}
+myfunc().then(
+    function (value) { myDisplay(value); },
+    function (error) { myDisplay(error); }
+);
+//Await Syntax
+//The await keyword can only be used inside an async function
+//let value = await promise;
+async function myDisplay() {
+    let myPromise = new Promise(function (myResolve, myReject) {
+        myResolve('Hello');
+    });
+    let some = await myPromise;
+    document.writeln(some);
+}
+myDisplay();
+
+async function getFile() {
+    let myPromise = new Promise(function(resolve) {
+      let req = new XMLHttpRequest();
+      req.open('GET', "mycar.html");
+      req.onload = function() {
+        if (req.status == 200) {
+          resolve(req.response);
+        } else {
+          resolve("File not Found");
+        }
+      };
+      req.send();
+    });
+    let some = await myPromise;
+    document.writeln(some);
+}
+getFile();
 */
