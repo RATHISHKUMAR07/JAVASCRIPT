@@ -33,7 +33,7 @@ To change img in html
 document.getElementById("img").src = "gif.gif";
 
 
-//Js Form validation
+Js Form validation
 function validateForm() {
     let x = document.forms["my"]["fname"].value;
     if (x == "") {
@@ -43,4 +43,87 @@ function validateForm() {
         return false;
     }
 }
+
+
+Dom Animate
+function myMove() {
+    let id = null;
+    const element = document.getElementById("animate");
+    let pos = 0;
+    clearInterval(id);
+    id = setInterval(frame, 5);
+    function frame() {
+        if (pos == 350) {
+            clearInterval(id);
+        }
+        else {
+            pos++;
+            element.style.top = pos + "px";
+            element.style.right = pos + "px";
+        }
+    }
+
+}
+
+Dom Events
+function checkCookies() {
+    var text = "";
+    if (navigator.cookieEnabled == true) {
+        text = "cookies enabled";
+    }
+    else {
+        text = "cookies not";
+    }
+    document.getElementById("demo").innerHTML = text;
+}
+Change lower to upper
+function toUpperCase() {
+    const x = document.getElementById('fname');
+    x.value = x.value.toUpperCase();
+}
+
+function mOver(obj) {
+    obj.innerHTML = "Thank you";
+}
+function mOut(obj) {
+    obj.innerHTML = "Mouse over me";
+}
+
+function mDown(obj) {
+    obj.style.backgroundColor = "blue";
+    obj.innerHTML = "Release Me"
+}
+function mUp(obj) {
+    obj.style.backgroundColor = "green";
+    obj.innerHTML = "Thank you";
+}
+
+Syntax
+element.addEventListener(event, function, useCapture);
+
+document.getElementById("btn").addEventListener("click", displayDate);
+
+function displayDate() {
+    document.getElementById('demo').innerHTML = Date();
+}
+
+
+var x = document.getElementById('btn');
+x.addEventListener("mouseover", my1);
+x.addEventListener("click", my2);
+x.addEventListener("mouseout", my3);
+
+function my1() {
+    document.getElementById('demo').innerHTML = "Mouse over<br>";
+}
+function my2() {
+    document.getElementById('demo').innerHTML += "Mouse clicked<br>";
+}
+function my3() {
+    document.getElementById('demo').innerHTML = "Mouse out<br>";
+}
+
+Dom Navigate
+document.getElementById("id2").innerHTML =
+    document.getElementById('id1').firstChild.nodeValue;
 */

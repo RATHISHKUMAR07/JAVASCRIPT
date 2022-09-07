@@ -1,8 +1,9 @@
 <html>
    <head>
       <title>JAVASCRIPT</title>
+      <link rel = "stylesheet" href= "style.css">
    </head>
-   <body>
+   <body onload = "checkCookies()">
       <!--
       <button onclick = "document.getElementById('demo').innerHTML = Date()">Time?
       </button>
@@ -31,10 +32,34 @@
       RollNo: <input type = "number" name="rno" required>
       <input type = "submit" value = "Submit">
       </form>
--->
 
       <p id ='demo'>Hello</p>
       <button type="button" onclick="document.getElementById('demo').style.color = 'red'">Click me</button>
+      
+      <button onclick="myMove()">Click</button>
+      <div id = "container">
+         <div id = "animate"></div>
+      </div>
+      <h1 onclick="this.innerHTML = 'Oops'">Click on the text</h1>
+      
+      Name: <input type="text" id="fname" onchange="toUpperCase()">
+      
+      <div onmouseover="mOver(this)" onmouseout="mOut(this)"
+         style = "background-color: aqua; width: 100px; height: 20px;
+         padding: 40px;">Mouse over Me</div>
+
+      <div onmouseover="mDown(this)" onmouseout="mUp(this)"
+         style = "background-color: aqua; width: 100px; height: 20px;
+         padding: 40px;">Click Me</div>
+
+      <button id="btn">Try it</button>
+
+      <p id = "id1">1</p>
+      <p id = "id2">2</p>
+      -->
+      
+      <p id = "demo"></p>
+      
       <script src="C:\Users\Naveen Sai\Desktop\JAVASCRIPT\javascript3.js"></script>
 
    </body>
