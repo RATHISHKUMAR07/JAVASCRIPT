@@ -126,4 +126,36 @@ function my3() {
 Dom Navigate
 document.getElementById("id2").innerHTML =
     document.getElementById('id1').firstChild.nodeValue;
+
+DOM NODES
+const para = document.createElement("p");
+const node = document.createTextNode("This is new");
+para.appendChild(node);
+const element = document.getElementById("div1");
+element.appendChild(para);
+
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+const element = document.getElementById("div1");
+const child = document.getElementById("p1");
+
+Insert Before
+element.insertBefore(para, child);
+
+const remove = document.getElementById('p1');
+remove.remove();
+
+DOM Collections
+const myNodelist = document.getElementsByTagName("p");
+for (let i = 0; i < myNodelist.length; i++) {
+  myNodelist[i].style.color = "blue";
+}
+
+DOM Node List
+const myNodelist = document.querySelectorAll("p");
+for (let i = 0; i < myNodelist.length; i++) {
+  myNodelist[i].style.color = "red";
+}
 */
