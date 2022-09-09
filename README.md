@@ -1,2 +1,3 @@
 # Javascript-Practice
-In this Repository - I uploaded practiced content of javascript from w3schools to referee in future.
+<b>Languages</b> - HTML, CSS, JAVASCRIPT<br>
+<b>In this Repository</b> - I uploaded practiced content of Javascript,Css and Html.
