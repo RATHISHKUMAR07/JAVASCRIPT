@@ -220,4 +220,62 @@ function alertPrompt() {
     document.write(txt);
 }
 alert("Hello\nHi");
+
+JS WEB API - Application programming interface
+JS GeoLocation
+
+function geoLocation() {
+    try {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    catch {
+        document.write(err);
+    }
+}
+function showPosition() {
+    document.write("Latitude :" + position.coords.latitude)
+    document.write("Longitude :"+ position.coords.longitude)
+
+}
+
+JS API Validation
+
+function validation() {
+    var obj = document.getElementById('p1');
+    if (!obj.checkValidity()) {
+        document.write(obj.validationMessage);
+    }
+    else {
+        document.write("Input Ok");
+    }
+}
+
+JS API History
+function my() {
+    window.history.go(+3);
+}
+
+JS WEB Worker
+let w;
+
+function startWorker() {
+  if (typeof(w) == "undefined") {
+    w = new Worker("javascript3.js");
+  }
+  w.onmessage = function(event) {
+    document.getElementById("result").innerHTML = event.data;
+  };
+}
+
+function stopWorker() {
+  w.terminate();
+  w = undefined;
+}
+
+JS Fetch API
+let file = "";
+fetch(file)
+.then(x => x.text())
+.then(y => document.write(y));
 */
+//JS Geolocation API
