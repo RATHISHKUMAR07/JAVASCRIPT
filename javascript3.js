@@ -158,4 +158,66 @@ const myNodelist = document.querySelectorAll("p");
 for (let i = 0; i < myNodelist.length; i++) {
   myNodelist[i].style.color = "red";
 }
+
+JS Browser BOM Screen
+document.write("Width :" + screen.width);
+document.write("Height :" +screen.height + "<br>");
+document.write("AvailWidth :" +screen.availWidth + "<br>");
+document.write("AvailHeight :" +screen.availHeight + "<br>");
+document.write("ColorDepth :" +screen.colorDepth + "<br>");
+document.write("pixelDepth :" +screen.pixelDepth + "<br>");
+
+JS Location
+document.write("Location :" + window.location.href + "<br>");
+document.write("Hostname :" + window.location.hostname + "<br>");
+document.write("Pathname :" + window.location.pathname + "<br>");
+document.write("Protocol :" + window.location.protocol + "<br>");
+document.write("Port :" + window.location.port + "<br>");
+
+function newPage() {
+    window.location.assign("https://www.w3schools.com/js/js_window_location.asp");
+}
+JS History
+Back
+function goBack() {
+    window.history.back();
+}
+Forward
+function goForward() {
+    window.history.forward();
+}
+
+JS Navigator
+document.write("Cookie:" + window.navigator.cookieEnabled + "<br>");
+document.write("Appname :" + navigator.appName + "<br>");
+document.write("AppCodename :" + window.navigator.appCodeName + "<br>");
+document.write("Product :" +navigator.product + "<br>");
+document.write("App Version :" + navigator.appVersion + "<br>");
+document.write("Platform :" + navigator.platform + "<br>");
+document.write("Language :" + navigator.language + "<br>");
+
+JS Popup Alert
+function alertPop() {
+    var txt;
+    if (confirm("Press a button")) {
+        txt = "You pressed Ok";
+    }
+    else {
+        txt = "You pressed Cancel";
+    }
+    document.getElementById('demo').innerHTML = txt;
+}
+
+function alertPrompt() {
+    let txt;
+    let person = prompt("Please enter your name:", "Harry Potter");
+    if (person == null || person == "") {
+        txt = "User cancelled the prompt";
+    }
+    else {
+        txt = "Hello " + person + "! How are you today?";
+    }
+    document.write(txt);
+}
+alert("Hello\nHi");
 */
